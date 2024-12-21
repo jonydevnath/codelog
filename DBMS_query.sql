@@ -10,7 +10,7 @@ CREATE TABLE student(
     dept char(50),
     batch int,
     primary key(id)
-)
+);
 
 -- insert value for course
 
@@ -20,27 +20,27 @@ values(1000, 'kamrul', 'CSE', 43),
     (1002, 'vimrul', 'CSE', 43),
     (1003, 'jamrul', 'CSE', 43),
     (1004, 'amrul', 'CSE', 43),
-    (1005, 'damrul', 'CSE', 43)
+    (1005, 'damrul', 'CSE', 43);
 
 -- create table course (with primary key)
 
 CREATE TABLE course(
-    courseId int,
+    courseId char(50),
     title char(50),
     credit float,
     version char(11),
     primary key(courseId)
-)
+);
 
 --insert value for course
-insert into course (courseId, title, credit, version)
-values(100, "bangla", 3.00, 'A'),
-    (101, "english", 3.00, 'A'),
-    (102, "math", 3.00, 'A'),
-    (103, "physics", 3.00, 'A'),
-    (104, "chemistry", 3.00, 'A'),
-    (105, "biology", 3.00, 'A'),
-    (106, "hmath", 3.00, 'A')
+insert into course (courseId, title, credit, vers)
+values('cs100', "bangla", 3.00, 'A'),
+    ("cs101", "english", 3.00, 'A'),
+    ("cs102", "math", 3.00, 'A'),
+    ("cs103", "physics", 3.00, 'A'),
+    ("cs104", "chemistry", 3.00, 'A'),
+    ("cs105", "biology", 3.00, 'A'),
+    ("cs106", "hmath", 3.00, 'A');
 
 -- create table enroll (with 2 foreign key)
 
@@ -49,7 +49,7 @@ values(100, "bangla", 3.00, 'A'),
 -- (FK course data type int)
 CREATE TABLE enroll(
     id int, 
-    courseId int, 
+    courseId char(50), 
     sessionId char(50),
     type char(50),
     section char(11),
@@ -60,24 +60,24 @@ CREATE TABLE enroll(
 
 -- enroll for Student kamrul
 insert into enroll
-values(1000, 100, 'fall-24', 'regular', 'A'),
-    (1000, 101, 'fall-24', 'regular', 'A'),
-    (1000, 102, 'fall-24', 'regular', 'A'),
-    (1000, 103, 'fall-24', 'regular', 'A'),
-    (1000, 104, 'fall-24', 'regular', 'A'),
-    (1000, 105, 'fall-24', 'regular', 'A'),
-    (1000, 106, 'fall-24', 'regular', 'A')
+values(1000, "cs100", 'fall-24', 'regular', 'A'),
+    (1000, "cs101", 'fall-24', 'regular', 'A'),
+    (1000, "cs102", 'fall-24', 'regular', 'A'),
+    (1000, "cs103", 'fall-24', 'regular', 'A'),
+    (1000, "cs104", 'fall-24', 'regular', 'A'),
+    (1000, "cs105", 'fall-24', 'regular', 'A'),
+    (1000, "cs106", 'fall-24', 'regular', 'A');
 
 
 -- enroll for Student dimrul
 insert into enroll
-values(1001, 100, 'fall-24', 'regular', 'A'),
-    (1001, 101, 'fall-24', 'regular', 'A'),
-    (1001, 102, 'fall-24', 'regular', 'A'),
-    (1001, 103, 'fall-24', 'regular', 'A'),
-    (1001, 104, 'fall-24', 'regular', 'A'),
-    (1001, 105, 'fall-24', 'regular', 'A'),
-    (1001, 106, 'fall-24', 'regular', 'A')
+values(1001, "cs100", 'fall-24', 'regular', 'A'),
+    (1001, "cs101", 'fall-24', 'regular', 'A'),
+    (1001, "cs102", 'fall-24', 'regular', 'A'),
+    (1001, "cs103", 'fall-24', 'regular', 'A'),
+    (1001, "cs104", 'fall-24', 'regular', 'A'),
+    (1001, "cs105", 'fall-24', 'regular', 'A'),
+    (1001, "cs106", 'fall-24', 'regular', 'A');
 
 
 
@@ -104,3 +104,4 @@ update enroll set type='retake', section='B' where id=1001 and sessionId='fall-2
 -------------------------------------------
 --Delete_Query
 delete from student where id=1001 and nam='jhon';
+
