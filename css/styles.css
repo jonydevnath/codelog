@@ -1,0 +1,154 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
+main.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  max-width: 480px;
+}
+
+main h1 {
+  padding: 0;
+  background: linear-gradient(to right, #d78dd2, #b999ee, #9da5e9, #8fa9f0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+nav strong {
+  color: #ffffff;
+}
+
+nav a{
+  text-decoration: none;
+}
+
+nav article, h3 {
+  padding: 0;
+  background: linear-gradient(to right, #d78dd2, #b999ee, #9da5e9, #8fa9f0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+section.hero {
+  text-align: center;
+  margin-top: 105px;
+  margin-bottom: 105px;
+
+}
+
+section.hero h1 {
+  font-size: 3rem;
+  padding: 0;
+  background: linear-gradient(to right, #d78dd2, #b999ee, #9da5e9, #8fa9f0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+main .grid p {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+main .grid .centerImg {
+  display: block;
+  margin-bottom: 20px;
+}
+
+main h5 {
+  color: #ffffff;
+}
+
+section .grid .social {
+  display: flex;
+  justify-content: center;
+}
+
+section .grid .media {
+  float: right;
+  margin: auto;
+}
+
+section .grid .media a {
+  font-size: 60px;
+}
+
+section.newsletter {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+main .btn {
+  text-align: center;
+}
+
+footer {
+  text-align: center;
+}
+
+/* blog */
+
+article h2 {
+  font-size: 2.2rem;
+}
+
+main.blog article .post {
+  font-size: 1rem;
+}
+
+main.blog textarea {
+  width: 80%;
+}
+
+main.blog .cbtn {
+  width: 15%;
+}
+
+/* blog */
+
+/* post */
+
+section.grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+article.left {
+  width: 25%;
+  float: left;
+}
+article.right {
+  width: 73%;
+  float: right;
+}
+
+article.left .custom-link {
+    text-decoration: none; 
+    display: inline-block; 
+    width: 100%;
+    padding: 3px; 
+    margin: 4px 0; 
+}
+
+article.left .active {
+  color: #76b9f3;
+}
+/* post */
+
+/* media query */
+
+@media screen and (min-width: 1025px) {
+  main.blog {
+    width: 680px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  main.blog {
+    width: 1170px;
+    margin: 0 auto;
+  }
+}
