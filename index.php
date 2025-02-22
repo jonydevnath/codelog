@@ -21,11 +21,11 @@ $result = mysqli_query($conn, $query);
 <main class="container">
     <!-- category section -->
     <section class="grid">
+        <div><a href="?category=News">News</a></div>
         <div><a href="?category=Programming">Programming</a></div>
-        <div><a href="?category=Data Science">Data Science</a></div>
         <div><a href="?category=Python">Python</a></div>
         <div><a href="?category=Cyber Security">Cyber Security</a></div>
-        <div><a href="?category=Coding">Coding</a></div>
+        <div><a href="?category=Data Science">Data Science</a></div>
         <div><a href="?category=Self Improvement">Self Improvement</a></div>
     </section>
     <br><br>

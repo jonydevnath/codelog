@@ -29,11 +29,11 @@
         <ul>
             <li><a href="index.php"><h3>Code Log</h3></a></li>
         </ul>
-        <ul>
+        <!-- <ul>
             <li>
                 <input type="search" name="search" placeholder="Search" aria-label="Search" />
             </li>
-        </ul>
+        </ul> -->
         <ul>
             <?php if (!$isLoggedIn): ?>
                 <li><a href="signin.php" class="secondary">Sign In</a></li>
