@@ -1,12 +1,6 @@
 <?php
 include_once("header.php");
 
-// Check if the user is logged in
-if (!isset($_SESSION['user_id'])) {
-    header("Location: signin.php"); // Redirect to sign-in page
-    exit();
-}
-
 // Initialize variables
 $title = "Post Not Found";
 $image = "assets/placeholder.png";
@@ -18,15 +12,19 @@ $comments = [];
 // Fetch the post based on `post_id` from URL
 $post_id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
-$query = "SELECT * FROM posts WHERE post_id = $post_id";
-$result = mysqli_query($conn, $query);
+// Ensure a valid post ID
+if ($post_id > 0) {
+    $post_id_safe = mysqli_real_escape_string($conn, $post_id);
+    $query = "SELECT * FROM posts WHERE post_id = '$post_id_safe'";
+    $result = mysqli_query($conn, $query);
 
-if ($result && mysqli_num_rows($result) > 0) {
-    $row = mysqli_fetch_assoc($result);
-    $title = htmlspecialchars($row['title']);
-    $image = htmlspecialchars($row['img']);
-    $content = nl2br(htmlspecialchars($row['post'])); // Format newlines and escape HTML
-    mysqli_free_result($result);
+    if ($result && mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+        $title = htmlspecialchars($row['title']);
+        $image = htmlspecialchars($row['img']);
+        $content = nl2br(htmlspecialchars($row['post']));
+        mysqli_free_result($result);
+    }
 }
 
 // Fetch logged-in user name
@@ -34,10 +32,12 @@ $user_name = isset($_SESSION['username']) ? $_SESSION['username'] : null;
 
 // Handle comment submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $comment = htmlspecialchars($_POST['comment'] ?? '');
+    $comment = isset($_POST['comment']) ? trim($_POST['comment']) : '';
 
     if (!empty($user_name) && !empty($comment)) {
-        $query = "INSERT INTO comments (post_id, user_name, commnt) VALUES ('$post_id', '$user_name', '$comment')";
+        $comment_safe = mysqli_real_escape_string($conn, $comment);
+        $query = "INSERT INTO comments (post_id, user_name, commnt) VALUES ('$post_id_safe', '$user_name', '$comment_safe')";
+        
         if (mysqli_query($conn, $query)) {
             $success = "Comment added successfully!";
         } else {
@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 // Fetch comments for the post
-$query = "SELECT user_name, commnt, created_at FROM comments WHERE post_id = '$post_id' ORDER BY created_at DESC";
+$query = "SELECT user_name, commnt, created_at FROM comments WHERE post_id = '$post_id_safe' ORDER BY created_at DESC";
 $result = mysqli_query($conn, $query);
 
 if ($result && mysqli_num_rows($result) > 0) {
@@ -58,6 +58,12 @@ if ($result && mysqli_num_rows($result) > 0) {
     }
     mysqli_free_result($result);
 }
+
+// Fixed Comment Count Query
+$count_query = "SELECT COUNT(*) AS total_comments FROM comments WHERE post_id = '$post_id_safe'";
+$cmtresult = mysqli_query($conn, $count_query);
+$count_row = mysqli_fetch_assoc($cmtresult);
+$comment_count = $count_row['total_comments'];
 
 mysqli_close($conn);
 ?>
@@ -95,6 +101,7 @@ mysqli_close($conn);
 
     <article>
         <h3>Comments</h3>
+        <h6><?php echo $comment_count; ?> Comments</h6>
 
         <!-- Comment Form -->
         <?php if ($user_name): ?>
