@@ -108,6 +108,7 @@ mysqli_close($conn);
             <hr>
 
             <!-- Like Icon -->
+            <?php if ($is_logged_in): ?>
             <?php if ($has_liked): ?>
             <!-- Unlike Icon (Filled Heart) -->
             <form action="" method="post" style="display:inline;">
@@ -122,6 +123,12 @@ mysqli_close($conn);
                 <i class="bi bi-heart" style="color: #01AAFF; cursor: pointer;"
                     onclick="this.closest('form').submit();"></i>
             </form>
+            <?php endif; ?>
+            <?php else: ?>
+            <!-- Redirect to login if not logged in -->
+            <a href="signin.php" style="text-decoration: none; display: inline-block;">
+                <i class="bi bi-heart" style="color: #01AAFF; cursor: pointer;"></i>
+            </a>
             <?php endif; ?>
 
             <!-- Like Count Display -->
