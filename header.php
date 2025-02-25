@@ -4,13 +4,14 @@
     // ini_set('display_startup_errors', 1);
     // error_reporting(E_ALL);
 
+    session_start(); // Start the session
+
     // Include the database connection
     include 'config/db.php';
 
-    session_start(); // Start the session
-
     // Check if the user is logged in by checking session data
     $isLoggedIn = isset($_SESSION['username']); // True if logged in, false otherwise
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,11 +30,7 @@
         <ul>
             <li><a href="index.php"><h3>Code Log</h3></a></li>
         </ul>
-        <!-- <ul>
-            <li>
-                <input type="search" name="search" placeholder="Search" aria-label="Search" />
-            </li>
-        </ul> -->
+    
         <ul>
             <?php if (!$isLoggedIn): ?>
                 <li><a href="signin.php" class="secondary">Sign In</a></li>

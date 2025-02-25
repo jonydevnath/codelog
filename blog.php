@@ -108,27 +108,27 @@ mysqli_close($conn);
             <hr>
 
             <!-- Like Icon -->
-            <?php if ($is_logged_in): ?>
-            <?php if ($has_liked): ?>
-            <!-- Unlike Icon (Filled Heart) -->
-            <form action="" method="post" style="display:inline;">
-                <input type="hidden" name="like_action" value="unlike">
-                <i class="bi bi-heart-fill" style="color: #01AAFF; cursor: pointer;"
-                    onclick="this.closest('form').submit();"></i>
-            </form>
+            <?php if ($isLoggedIn): ?>
+                <?php if ($has_liked): ?>
+                    <!-- Unlike Icon (Filled Heart) -->
+                    <form action="" method="post" style="display:inline;">
+                        <input type="hidden" name="like_action" value="unlike">
+                        <i class="bi bi-heart-fill" style="color: #01AAFF; cursor: pointer;"
+                            onclick="this.closest('form').submit();"></i>
+                    </form>
+                <?php else: ?>
+                    <!-- Like Icon (Empty Heart) -->
+                    <form action="" method="post" style="display:inline;">
+                        <input type="hidden" name="like_action" value="like">
+                        <i class="bi bi-heart" style="color: #01AAFF; cursor: pointer;"
+                            onclick="this.closest('form').submit();"></i>
+                    </form>
+                <?php endif; ?>
             <?php else: ?>
-            <!-- Like Icon (Empty Heart) -->
-            <form action="" method="post" style="display:inline;">
-                <input type="hidden" name="like_action" value="like">
-                <i class="bi bi-heart" style="color: #01AAFF; cursor: pointer;"
-                    onclick="this.closest('form').submit();"></i>
-            </form>
-            <?php endif; ?>
-            <?php else: ?>
-            <!-- Redirect to login if not logged in -->
-            <a href="signin.php" style="text-decoration: none; display: inline-block;">
-                <i class="bi bi-heart" style="color: #01AAFF; cursor: pointer;"></i>
-            </a>
+                <!-- Redirect to login if not logged in -->
+                <a href="signin.php" style="text-decoration: none; display: inline-block;">
+                    <i class="bi bi-heart" style="color: #01AAFF; cursor: pointer;"></i>
+                </a>
             <?php endif; ?>
 
             <!-- Like Count Display -->
@@ -136,9 +136,9 @@ mysqli_close($conn);
 
             <a style="margin-left: 20px;" href=""><i class="bi bi-play-circle"></i></a>
             <a style="margin-left: 20px;" href=""><i class="bi bi-box-arrow-up"></i></a>
+
             <hr>
         </div>
-
 
         <p class="post">
             <?php echo $content; ?>

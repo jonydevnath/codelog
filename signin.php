@@ -1,4 +1,7 @@
 <?php
+// Start session
+session_start();
+
 // Include the database connection
 include 'config/db.php';
 
