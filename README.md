@@ -97,6 +97,10 @@ The SQL file includes a default admin user for local testing:
 
 ## Admin Access
 
+```text
+http://localhost/codelog/admin/signin_admin.php
+```
+
 After logging in as the admin, you can access the admin dashboard and manage content from the admin pages.
 
 ## Notes
