@@ -14,10 +14,9 @@ CodeLog is a simple blog and content publishing web application built with PHP a
 
 ## Tech Stack
 
-- PHP 8+
-- MySQL / MariaDB
-- HTML5, CSS3, JavaScript
-- mysqli for database access
+- PHP
+- MySQL
+- HTML5, CSS3-PicoCSS, JavaScript
 
 ## Project Structure
 
@@ -102,7 +101,7 @@ After logging in as the admin, you can access the admin dashboard and manage con
 
 ## Notes
 
-- This project is designed for local development and learning purposes.
+- This project is designed for local development and learning purposes(DBMS - SQL/MYSQL).
 - The application uses basic PHP session handling and mysqli queries.
 - For production use, consider strengthening security, adding validation, and using prepared statements.
 
